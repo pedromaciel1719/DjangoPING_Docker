@@ -16,23 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from drf_yasg import openapi
-from drf_yasg.views import get_schema_view
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="Django REST API",
-        default_version="v1",
-        description="Example Django REST API with GET, POST, PUT, DELETE methods.",
-    ),
-    public=True,
-)
 
 urlpatterns = [
     # Admin - Optional
     path("admin/", admin.site.urls),
-    # API
-    path("api/", include("api.urls")),
-    # Documentation
-    path("", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    # Ping
+    path("ping-request/", include("api.urls")),
 ]
